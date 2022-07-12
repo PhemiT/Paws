@@ -1,0 +1,18 @@
+@import "variables";
+
+.App {
+    background: $clr-lgt-brown;
+    width: 100vw;
+    height: 100vh;
+    color: $clr-black;
+    font-family: $ff-main;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Title {
+    font-family: $ff-heading;
+    font-size: 60px;
+    text-align: center;
+}

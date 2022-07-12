@@ -1,0 +1,30 @@
+@import "variables";
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  outline: none;
+  list-style: none;
+  font-family: $ff-main;
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+
+}

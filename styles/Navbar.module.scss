@@ -1,0 +1,27 @@
+@import "variables";
+
+.navbar__container {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $ff-main;
+
+    .logo {
+        h3 {
+            font-size: 23px;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .logo__icon {
+            font-size: 40px;
+        }
+    }
+}
+
+.menu__item {
+    font-size: 30px;
+    cursor: pointer;
+}

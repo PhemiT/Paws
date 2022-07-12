@@ -1,0 +1,17 @@
+@import "variables";
+
+.footer__container {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $ff-main;
+
+    span {
+        font-size: 20px;
+    }
+
+    .attribution {
+        font-size: 15px;
+    }
+}

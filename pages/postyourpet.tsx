@@ -1,5 +1,5 @@
 import type {NextPage} from "next";
-import {useState} from 'react';
+import React, {useState} from 'react';
 import Navbar from '../components/Navbar'
 import { BiCloudUpload } from "react-icons/bi"
 import { useRouter } from 'next/router'
@@ -11,10 +11,6 @@ const PostYourPet: NextPage = () => {
     const contentType = 'application/json'
     const [name, setName] = useState("")
     const [imageUrl, setImageUrl] = useState("")
-    const [data, setData] = useState({
-        imageName: "",
-        imageLink: ""
-    })
 
     /**** POST TO MONGODB  ****/
     const postData = async () => {
@@ -31,26 +27,25 @@ const PostYourPet: NextPage = () => {
           })
       }
 
-    const handleChange = (e: any) => {
-        const target = e.target
+    const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+        const target = e.target as HTMLInputElement
         const value = target.value 
         setName(value)
         console.log(name)
     }
 
-    const handleImageChange = (e:any) => {
-        setFileName(e.target.files[0].name)
-        setImageUrl(e.target.files[0].name)
+    const handleImageChange = (e:React.FormEvent<HTMLInputElement>) => {
+        const target = e.target as HTMLInputElement
+        if (target.files) {
+            setFileName(target.files[0].name)
+            setImageUrl(target.files[0].name)
+        }
         console.log(imageUrl)
     }
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
         console.log(name, imageUrl)
-        setData({
-            imageName: name,
-            imageLink: imageUrl
-        })
         postData()
     }
     
@@ -58,7 +53,7 @@ const PostYourPet: NextPage = () => {
         <div className="post__container">
             <Navbar />
             <div className="post__container--form">
-                <h1 className="title">Post your Cuties</h1>
+                <h1 className="title">Post your Cutie(s)</h1>
                 <form onSubmit={handleSubmit}>
                     <input 
                     type="text" 

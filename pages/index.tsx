@@ -11,7 +11,7 @@ const Home: NextPage = () => {
     <div className={styles.App}>
       <Navbar />
       <div className="gallery-container">
-        <h1 className={styles.Title}>Pet Gallery</h1>
+        <h1 className="title">Pet Gallery</h1>
         <PictureGallery />
       </div>
       <Footer />

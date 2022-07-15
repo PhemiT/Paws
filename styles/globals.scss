@@ -29,6 +29,12 @@
 
 }
 
+.title {
+  font-family: $ff-heading;
+  font-size: 60px;
+  text-align: center;
+}
+
 /**** NAVBAR ****/
 
 :root {
@@ -396,4 +402,98 @@ body {
   border: 2.5px solid $clr-black;
   color: $clr-lgt-brown;
   background-color: $clr-black
+}
+
+/**** POST YOUR PET ****/
+
+.post__container {
+    background: $clr-lgt-brown;
+    width: 100vw;
+    height: 100vh;
+    color: $clr-black;
+    font-family: $ff-main;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .title {
+      font-family: $ff-main;
+      font-size: 55px;
+    }
+
+    .attribution {
+      padding: 20px 0;
+      font-size: 15px;
+      text-align: center;
+  }
+
+  div[class="post__container--form"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    form {
+      padding: 25px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      label {
+        font-size: 20px;
+        font-weight: 500;
+        cursor: pointer;
+        border: 1.8px dotted $clr-black;
+        padding: 10px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all 400ms ease;
+      }
+
+      label:hover {
+        background-color: $clr-black;
+        color: $clr-lgt-brown;
+      }
+
+      input[type="file"] {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+      }
+
+      input[type="text"] {
+        background-color: $clr-lgt-brown;
+        color: $clr-black;
+        padding: 15px;
+        border: 2px solid $clr-black;
+        margin: 0 0 25px; width: 250px;
+      }
+
+      ::placeholder {
+        color: $clr-black;
+      }
+
+      button {
+        outline: none;
+        padding: 15px 100px;
+        background-color: $clr-black;
+        color: $clr-lgt-brown;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 400ms ease;
+      }
+
+      button:hover {
+        background-color: $clr-lgt-brown;
+        border: 2px solid $clr-black;
+        color: $clr-black;
+      }
+    }
+  }
 }

@@ -1,11 +1,12 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import styles from '../styles/Navbar.module.scss'
+import styles from '../styles/Navbar.module.scss';
 import { GiSittingDog,
-         GiJumpingDog } from 'react-icons/gi'
+         GiJumpingDog } from 'react-icons/gi';
 import { RiMenu4Line,
-        RiCloseLine } from 'react-icons/ri'
+        RiCloseLine } from 'react-icons/ri';
 import { useState } from "react";
+import Link from 'next/link';
 
 const Navbar: NextPage = () => {
 
@@ -14,7 +15,9 @@ const Navbar: NextPage = () => {
     return (
             <div className={styles.navbar__container}>
                 <div className={styles.logo}>
-                    <h3><GiJumpingDog className={styles.logo__icon}/>Paws</h3>
+                    <Link href="/">
+                        <h3><GiJumpingDog className={styles.logo__icon}/>Paws</h3>
+                    </Link>
                 </div>
                 <div>
                     <span className={styles.menu__item}>
@@ -31,13 +34,19 @@ const Navbar: NextPage = () => {
                                 <nav id="main-navigation" className="nav-main">
                                     <ul className="menu">
                                     <li className="menu__item">
-                                        <a className="menu__link" href="#0">Home</a>
+                                        {/* <Link href="/"> */}
+                                            <a className="menu__link">Home</a>
+                                        {/* </Link> */}
                                     </li>
                                     <li className="menu__item">
-                                        <a className="menu__link" href="#0">Gallery</a>
+                                        <Link href="/">
+                                            <a className="menu__link">Gallery</a>
+                                        </Link>
                                     </li>
                                     <li className="menu__item">
-                                        <a className="menu__link" href="#0">Post your Pet</a>
+                                        <Link href="/postyourpet">
+                                            <a className="menu__link">Post your Pet</a>
+                                        </Link>
                                     </li>
                                     </ul>
                               </nav>

@@ -425,6 +425,14 @@ body {
       padding: 20px 0;
       font-size: 15px;
       text-align: center;
+
+      span[class="my-name"] {
+        a {
+          font-size: 16px;
+          color: $clr-black;
+          text-decoration: underline;
+        }
+      }
   }
 
   div[class="post__container--form"] {

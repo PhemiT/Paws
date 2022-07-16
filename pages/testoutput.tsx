@@ -1,17 +1,17 @@
 import dbConnect from '../lib/dbConnect'
 import Image from '../models/Image'
 
-const TestOutput = ({ images }) => {
+const TestOutput = ({ images }: {images: any}) => {
     return (
         <>
-            {images.map((image) => (
+            {images.map((image: any) => (
                 <div key={image._id}>
                     <h1>
                         {image.name}
                     </h1>
-                    <h3>
-                        {image.image_url}
-                    </h3>
+                    <img
+                       src={image.image_url}
+                    />
                 </div>
         ))}
         </>

@@ -10,10 +10,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.App}>
       <Navbar />
-      <div className="gallery-container">
-        <h1 className="title">Pet Gallery</h1>
-        <PictureGallery />
-      </div>
+      
       <Footer />
     </div>
   )

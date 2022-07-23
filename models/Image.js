@@ -9,6 +9,13 @@ const ImageSchema = new mongoose.Schema({
     required: [true, 'Please provide a name for this pet.'],
     maxlength: [60, 'Name cannot be more than 60 characters'],
   },
+  caption: {
+    /* The caption of this Post */
+
+    type: String,
+    required: [true, 'Please provide a caption for this post.'],
+    maxlength: [60, 'Name cannot be more than 60 characters'],
+  },
   image_url: {
     /* Url to pet image */
 

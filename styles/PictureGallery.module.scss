@@ -1,0 +1,20 @@
+@import "variables";
+
+.container {
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+
+    div[class="card"] {
+        flex-shrink: 0;
+        width: 200px;
+        height: 300px;
+        border: 2px solid $clr-black;
+        margin-left: 10px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+  }
+  
+  

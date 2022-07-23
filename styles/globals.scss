@@ -39,7 +39,7 @@
 
 :root {
   --color-primary: #231C16;
-  --color-secondary: #75757C;
+  --color-secondary: #A49589;
   --color-dark: #A49589;
   --color-light: #F5F5F5;
   --font-family-primary: $ff-main;
@@ -494,7 +494,7 @@ body {
         color: $clr-lgt-brown;
         cursor: pointer;
         border: 2px solid transparent;
-        transition: all 400ms ease;
+        transition: all 220ms ease;
       }
 
       button:hover {
@@ -505,3 +505,7 @@ body {
     }
   }
 }
+
+
+
+

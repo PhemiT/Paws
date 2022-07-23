@@ -1,17 +1,25 @@
 import type {NextPage} from "next";
 import React, {useState} from 'react';
-import Navbar from '../components/Navbar'
-import { BiCloudUpload } from "react-icons/bi"
-import { useRouter } from 'next/router'
+import Navbar from '../components/Navbar';
+import { BiCloudUpload } from "react-icons/bi";
+import { useRouter } from 'next/router';
+import { motion } from "framer-motion";
 
 
 const PostYourPet: NextPage = () => {
     const router = useRouter()
     const contentType = 'application/json'
+
+    const initialInputValues = {
+        name: "",
+        caption: "",
+    };
+
+    const [values, setValues] = useState(initialInputValues)
     const [fileName, setFileName] = useState("Select Pet Image");
-    const [captionValue, setCaptionValue] = useState("")
     const [imageUrl, setImageUrl] = useState("")
-    const [image, setImage] = useState<File | any>(null)
+    const [selectedFile, setSelectedFile] = useState<File | any>('no file selected')
+    /* const [image, setImage] = useState("") */
 
     /**** POST TO MONGODB  ****/
     const postData = async () => {
@@ -22,15 +30,18 @@ const PostYourPet: NextPage = () => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                name: captionValue,
+                name: values.name,
+                caption: values.caption,
                 image_url: imageUrl
             }),
           })
       }
 
+      /**** UPLOAD TO CLOUDINARY  ****/ 
       const uploadImage = () => {
+        console.log(selectedFile)
         const data = new FormData()
-        data.append("file", image)
+        data.append("file", selectedFile)
         data.append("upload_preset", "pawsapp")
         data.append("cloud_name", "dyc5lca0t")
         fetch("https://api.cloudinary.com/v1_1/dyc5lca0t/image/upload", {
@@ -42,35 +53,38 @@ const PostYourPet: NextPage = () => {
             setImageUrl(data.url)
         })
         .catch(err => console.log(err))
+        console.log(values.name,values.caption, imageUrl)
       }
 
-    const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-        const target = e.target as HTMLInputElement
-        setCaptionValue(target.value)
-        console.log(captionValue)
-        
+      /**** Pretty Descriptive :) ****/
+      const clearInputs = () => {
+        setFileName("Select Pet Image")
+        setValues(initialInputValues)
     }
 
-    const handleImageChange = (e:React.FormEvent<HTMLInputElement>) => {
-        const target = e.target as HTMLInputElement
-        if (target.files) {
-            setFileName(target.files[0].name)
-            setImage(target.files[0])
-        }
-        /* console.log(imageUrl) */
+    const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+        const {name, value} = e.target as HTMLInputElement
+        setValues({
+            ...values,
+            [name]: value,
+        })
+
+        console.log(values.caption, values.name)
+    }
+
+    const handleImageChange = (e: React.FormEvent<HTMLInputElement>) => {
+        setSelectedFile(e.target.files[0])
+        setFileName(e.target.files[0].name)
+        
+        console.log(selectedFile, fileName)
     }
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        console.log(captionValue, imageUrl)
-        uploadImage()
-        // Allow enough time for image to upload
-        setTimeout(postData, 5000)
-        /* postData() */
-
-        // Clear inputs
-        setFileName("Select Pet Image")
-        setCaptionValue("")
+        Promise.resolve()
+        .then(uploadImage)
+        .then(postData)
+        .then(clearInputs)
     }
     
     return (
@@ -80,10 +94,19 @@ const PostYourPet: NextPage = () => {
                 <h1 className="title">Post your Cutie(s)</h1>
                 <form onSubmit={handleSubmit}>
                     <input 
+                    type="text"
+                    placeholder="What is your Beauty's Name?"
+                    onChange={handleChange}
+                    name="name"
+                    value={values.name}
+                    required
+                     />
+                    <input 
                     type="text" 
                     placeholder="Caption"
                     onChange={handleChange}
-                    value={captionValue}
+                    name="caption"
+                    value={values.caption}
                     required />
                     <label htmlFor="image-file-input">
                         <BiCloudUpload />
@@ -96,11 +119,17 @@ const PostYourPet: NextPage = () => {
                     accept="image/png, image/jpeg"
                     required 
                     onChange={handleImageChange}/>
-                    <button type="submit">Add to Gallery</button>
+                    <motion.button 
+                    type="submit"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.80 }}
+                    >
+                        Add to Gallery
+                    </motion.button>
                 </form>
             </div>
             {/* <div className="recent__uploads"></div> */}
-            <span className="attribution">Created with ❤️ by <span className="my-name"><a href="https://twitter.com/phemi_t">Phemi</a></span></span>
+            <span className="attribution">Created with ❤️ by <span className="my-name"><a target="_blank" href="https://twitter.com/phemi_t">Phemi</a></span></span>
 
         </div>
     )

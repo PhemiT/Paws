@@ -35,6 +35,11 @@ const Navbar: NextPage = () => {
                                     <ul className="menu">
                                     <li className="menu__item">
                                         <Link href="/">
+                                            <a className="menu__link">Home</a>
+                                        </Link>
+                                    </li>
+                                    <li className="menu__item">
+                                        <Link href="/gallery">
                                             <a className="menu__link">Gallery</a>
                                         </Link>
                                     </li>

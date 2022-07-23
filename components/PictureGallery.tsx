@@ -5,13 +5,14 @@ import { img1,
     img4,
     img5,
     img6} from "./imports";
+import { motion, useScroll } from "framer-motion";
 
 
 const PictureGallery: NextPage = () => {
     
     return <>
             <div className="picture-gallery__container">
-                <div className="slider-section scrolling-wrapper">
+                <div className="slider-section">
                     <img src={img1.src} alt="" className="card"/>
                     <img src={img2.src} alt="" className="card"/>
                     <img src={img3.src} alt="" className="card"/>

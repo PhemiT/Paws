@@ -21,6 +21,7 @@ export default async function handler(req, res) {
           req.body
         ) /* create a new model in the database */
         res.status(201).json({ success: true, data: image })
+        console.log(data)
       } catch (error) {
         res.status(400).json({ success: false })
       }

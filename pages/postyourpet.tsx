@@ -1,5 +1,5 @@
 import type {NextPage} from "next";
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import Navbar from '../components/Navbar';
 import { BiCloudUpload } from "react-icons/bi";
 import { useRouter } from 'next/router';
@@ -7,22 +7,35 @@ import { motion } from "framer-motion";
 
 
 const PostYourPet: NextPage = () => {
-    const router = useRouter()
-    const contentType = 'application/json'
-
+    /**** Variables and States  ****/
+    const router = useRouter();
+    const contentType = 'application/json';
     const initialInputValues = {
         name: "",
         caption: "",
     };
-
-    const [values, setValues] = useState(initialInputValues)
+    const imageFile = useRef("No File Selected");
+    const [values, setValues] = useState(initialInputValues);
     const [fileName, setFileName] = useState("Select Pet Image");
-    const [imageUrl, setImageUrl] = useState("")
-    const [selectedFile, setSelectedFile] = useState<File | any>('no file selected')
-    /* const [image, setImage] = useState("") */
+    const [imageUrl, setImageUrl] = useState("initialState");
+ 
+    /* useeffects */
+    useEffect(() => {
+        imageUrl !=="initialState" && 
+        Promise.resolve()
+        .then(postData)
+        .then(clearInputs)
+    }, [imageUrl])
+
+    /* Functions */
+    /*  */
+    /*  */
+    /* Fucntions */
+
 
     /**** POST TO MONGODB  ****/
     const postData = async () => {
+        console.log(values.name,values.caption, imageUrl)
           const res = await fetch('/api/images', {
             method: 'POST',
             headers: {
@@ -39,9 +52,8 @@ const PostYourPet: NextPage = () => {
 
       /**** UPLOAD TO CLOUDINARY  ****/ 
       const uploadImage = () => {
-        console.log(selectedFile)
         const data = new FormData()
-        data.append("file", selectedFile)
+        data.append("file", imageFile.current)
         data.append("upload_preset", "pawsapp")
         data.append("cloud_name", "dyc5lca0t")
         fetch("https://api.cloudinary.com/v1_1/dyc5lca0t/image/upload", {
@@ -53,7 +65,6 @@ const PostYourPet: NextPage = () => {
             setImageUrl(data.url)
         })
         .catch(err => console.log(err))
-        console.log(values.name,values.caption, imageUrl)
       }
 
       /**** Pretty Descriptive :) ****/
@@ -73,18 +84,15 @@ const PostYourPet: NextPage = () => {
     }
 
     const handleImageChange = (e: React.FormEvent<HTMLInputElement>) => {
-        setSelectedFile(e.target.files[0])
+        imageFile.current = e.target.files[0]
         setFileName(e.target.files[0].name)
         
-        console.log(selectedFile, fileName)
+        console.log(imageFile.current, fileName)
     }
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        Promise.resolve()
-        .then(uploadImage)
-        .then(postData)
-        .then(clearInputs)
+        uploadImage()
     }
     
     return (
@@ -92,6 +100,7 @@ const PostYourPet: NextPage = () => {
             <Navbar />
             <div className="post__container--form">
                 <h1 className="title">Post your Cutie(s)</h1>
+                <p>{imageUrl}</p>
                 <form onSubmit={handleSubmit}>
                     <input 
                     type="text"

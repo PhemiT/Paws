@@ -139,7 +139,7 @@ const PostYourPet: NextPage = () => {
                 </form>
             </div>
             {/* <div className="recent__uploads"></div> */}
-            <span className="attribution">Created with ❤️ by <span className="my-name"><a href="https://twitter.com/phemi_t">Phemi</a></span></span>
+            <span className="attribution">Created with ❤️ by <span className="my-name"><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/phemi_t">Phemi</a></span></span>
 
         </div>
     )

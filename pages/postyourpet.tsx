@@ -14,7 +14,7 @@ const PostYourPet: NextPage = () => {
         name: "",
         caption: "",
     };
-    const imageFile = useRef("No File Selected");
+    const imageFile = useRef<File | any >("No File Selected");
     const [values, setValues] = useState(initialInputValues);
     const [fileName, setFileName] = useState("Select Pet Image");
     const [imageUrl, setImageUrl] = useState("initialState");
@@ -85,8 +85,9 @@ const PostYourPet: NextPage = () => {
     }
 
     const handleImageChange = (e: React.FormEvent<HTMLInputElement>) => {
-        imageFile.current = e.target.files[0]
-        setFileName(e.target.files[0].name)
+        const target = e.target as HTMLInputElement
+        imageFile.current = target.files[0]
+        setFileName(target.files[0].name)
         
         console.log(imageFile.current, fileName)
     }

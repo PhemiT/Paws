@@ -593,6 +593,24 @@ body {
       top: 18px;
     }
   }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .midsection__main {
+    h1 {
+      font-size: 30px;
+    }
+  }
+}
+
+@media screen and (max-width:650px) {
+  .post__container {
+    .title {
+      font-size: 45px;
+    }
+  }
 }
 
 

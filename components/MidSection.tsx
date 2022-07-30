@@ -13,16 +13,16 @@ const MidSection: NextPage = () => {
                 />
             </div>
             <div className="buttons">
-                <button>
-                    <Link href="/gallery">
+                <Link href="/gallery">
+                    <button>
                         Visit Gallery
-                    </Link>
-                </button>
-                <button>
-                    <Link href="/postyourpet">
+                    </button>
+                </Link>
+                <Link href="/postyourpet">
+                    <button>
                         Post your Pet
-                    </Link>
-                </button>
+                    </button>
+                </Link>
             </div>
         </div>
     )

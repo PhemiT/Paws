@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 
 const MidSection: NextPage = () => {
     return (
@@ -12,8 +13,16 @@ const MidSection: NextPage = () => {
                 />
             </div>
             <div className="buttons">
-                <button>Visit Gallery</button>
-                <button>Post your Pet</button>
+                <button>
+                    <Link href="/gallery">
+                        Visit Gallery
+                    </Link>
+                </button>
+                <button>
+                    <Link href="/postyourpet">
+                        Post your Pet
+                    </Link>
+                </button>
             </div>
         </div>
     )

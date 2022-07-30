@@ -101,7 +101,7 @@ const PostYourPet: NextPage = () => {
             <Navbar />
             <div className="post__container--form">
                 <h1 className="title">Post your Cutie(s)</h1>
-                <p>{imageUrl}</p>
+                <p className="renderP">{imageUrl}</p>
                 <form onSubmit={handleSubmit}>
                     <input 
                     type="text"
@@ -139,7 +139,7 @@ const PostYourPet: NextPage = () => {
                 </form>
             </div>
             {/* <div className="recent__uploads"></div> */}
-            <span className="attribution">Created with ❤️ by <span className="my-name"><a target="_blank" href="https://twitter.com/phemi_t">Phemi</a></span></span>
+            <span className="attribution">Created with ❤️ by <span className="my-name"><a href="https://twitter.com/phemi_t">Phemi</a></span></span>
 
         </div>
     )

@@ -425,6 +425,11 @@ body {
       font-size: 55px;
     }
 
+    p[class="renderP"] {
+      color: $clr-lgt-brown;
+      font-size: 5px;
+    }
+
     .attribution {
       padding: 20px 0;
       font-size: 15px;

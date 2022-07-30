@@ -86,6 +86,7 @@ const PostYourPet: NextPage = () => {
 
     const handleImageChange = (e: React.FormEvent<HTMLInputElement>) => {
         const target = e.target as HTMLInputElement
+        if (!target.files) return;
         imageFile.current = target.files[0]
         setFileName(target.files[0].name)
         

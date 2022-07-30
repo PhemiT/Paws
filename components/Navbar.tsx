@@ -9,8 +9,6 @@ import { useState } from "react";
 import Link from 'next/link';
 
 const Navbar: NextPage = () => {
-
-    const [toggleMenu, setToggleMenu] = useState(true)
     
     return (
             <div className={styles.navbar__container}>
@@ -21,37 +19,31 @@ const Navbar: NextPage = () => {
                 </div>
                 <div>
                     <span className={styles.menu__item}>
-                        {/* {toggleMenu
-                            ?<RiCloseLine onClick={() => setToggleMenu(false)}/>
-                            :<RiMenu4Line onClick={() => setToggleMenu(true)}/>
-                            } */}
-                            {toggleMenu && (
-                                <>
-                                <input type="checkbox" id="main-navigation-toggle" className="btn btn--close" title="Toggle main navigation" />
-                                <label htmlFor="main-navigation-toggle">
-                                  <span></span>
-                                </label>
-                                <nav id="main-navigation" className="nav-main">
-                                    <ul className="menu">
-                                    <li className="menu__item">
-                                        <Link href="/">
-                                            <a className="menu__link">Home</a>
-                                        </Link>
-                                    </li>
-                                    <li className="menu__item">
-                                        <Link href="/gallery">
-                                            <a className="menu__link">Gallery</a>
-                                        </Link>
-                                    </li>
-                                    <li className="menu__item">
-                                        <Link href="/postyourpet">
-                                            <a className="menu__link">Post your Pet</a>
-                                        </Link>
-                                    </li>
-                                    </ul>
-                              </nav>
-                              </>
-                            )}
+                        <>
+                        <input type="checkbox" id="main-navigation-toggle" className="btn btn--close" title="Toggle main navigation" />
+                        <label htmlFor="main-navigation-toggle">
+                            <span></span>
+                        </label>
+                        <nav id="main-navigation" className="nav-main">
+                            <ul className="menu">
+                            <li className="menu__item">
+                                <Link href="/">
+                                    <a className="menu__link">Home</a>
+                                </Link>
+                            </li>
+                            <li className="menu__item">
+                                <Link href="/gallery">
+                                    <a className="menu__link">Gallery</a>
+                                </Link>
+                            </li>
+                            <li className="menu__item">
+                                <Link href="/postyourpet">
+                                    <a className="menu__link">Post your Pet</a>
+                                </Link>
+                            </li>
+                            </ul>
+                        </nav>
+                        </>
                     </span>
                 </div>
             </div>)

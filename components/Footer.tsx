@@ -7,9 +7,7 @@ const Footer: NextPage = () => {
     
     return <>
             <div className={styles.footer__container}>
-                <span className="footer-btn"><BsArrowLeft /></span>
-                <span className={styles.attribution}>Created with ❤️ by Phemi</span>
-                <span className="footer-btn"><BsArrowRight /></span>
+                <span className={styles.attribution}>Created with ❤️ by <span className="my-name"><a target="_blank" href="https://twitter.com/phemi_t">Phemi</a></span></span>
             </div>
         </>
 }

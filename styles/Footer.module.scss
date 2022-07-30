@@ -1,17 +1,22 @@
 @import "variables";
 
 .footer__container {
-    padding: 20px 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     font-family: $ff-main;
 
-    span {
-        font-size: 20px;
-    }
-
     .attribution {
+        padding: 20px 0;
         font-size: 15px;
+        text-align: center;
+  
+        span[class="my-name"] {
+          a {
+            font-size: 16px;
+            color: $clr-black;
+            text-decoration: underline;
+          }
+        }
     }
 }

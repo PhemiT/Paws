@@ -71,6 +71,7 @@ const PostYourPet: NextPage = () => {
       const clearInputs = () => {
         setFileName("Select Pet Image")
         setValues(initialInputValues)
+        setImageUrl("initialState")
     }
 
     const handleChange = (e: React.FormEvent<HTMLInputElement>) => {

@@ -609,9 +609,44 @@ body {
   .post__container {
     .title {
       font-size: 45px;
-      padding: 7px;
+      margin-inline: 7px;
     }
   }
 }
 
+.redirect {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
+  button {
+    width: 200px;
+    padding: 14px 0;
+    background-color: $clr-black;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 400ms ease;
+  }
+  a {
+    color: $clr-lgt-brown;
+  }
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    font-size: 16px;
+    font-weight: 600;
+    color: $clr-lgt-brown;
+  }
+
+  button:hover {
+    background-color: $clr-lgt-brown;
+    border: 2px solid $clr-black;
+
+    span {
+      color: $clr-black;
+    }
+  }
+}
 

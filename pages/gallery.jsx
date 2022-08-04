@@ -4,6 +4,7 @@ import styles from "../styles/Gallery.module.scss"
 import dbConnect from '../lib/dbConnect'
 import Image from '../models/Image'
 import Link from "next/link";
+import { BsArrowUpLeft } from "react-icons/bs";
 
 export async function getServerSideProps() {
   await dbConnect()
@@ -44,8 +45,13 @@ const Gallery = ({slides}) => {
     const [state, dispatch] = useReducer(slidesReducer, initialState);
   
     return (
+      <>
+        <div className="redirect">
+        <Link href="/">
+          <button className="backtohome"><span><BsArrowUpLeft /> Back to Home</span></button>
+        </Link>  
+        </div>
       <div className={styles.slides}>
-        <button><Link href="/">Back to Home</Link></button>
         <button onClick={() => dispatch({ type: "NEXT" })}>‹</button>
   
         {[...slides, ...slides, ...slides].map((slide, i) => {
@@ -91,6 +97,7 @@ const Gallery = ({slides}) => {
           }
         </style>
       </div>
+      </>
     );
   }
   

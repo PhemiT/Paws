@@ -4,6 +4,8 @@ import Navbar from '../components/Navbar';
 import { BiCloudUpload } from "react-icons/bi";
 import { useRouter } from 'next/router';
 import { motion } from "framer-motion";
+import UseAnimations from "react-useanimations";
+import infinity from "react-useanimations";
 
 
 const PostYourPet: NextPage = () => {
@@ -18,13 +20,14 @@ const PostYourPet: NextPage = () => {
     const [values, setValues] = useState(initialInputValues);
     const [fileName, setFileName] = useState("Select Pet Image");
     const [imageUrl, setImageUrl] = useState("initialState");
+    const [loading, setLoading] = useState(false);
  
     /* useeffects */
     useEffect(() => {
         imageUrl !=="initialState" && 
         Promise.resolve()
         .then(postData)
-        .then(clearInputs)
+        .then(clearRequest)
     }, [imageUrl])
 
     /* Functions */
@@ -68,10 +71,12 @@ const PostYourPet: NextPage = () => {
       }
 
       /**** Pretty Descriptive :) ****/
-      const clearInputs = () => {
-        setFileName("Select Pet Image")
-        setValues(initialInputValues)
-        setImageUrl("initialState")
+      const clearRequest = () => {
+        setFileName("Select Pet Image");
+        setValues(initialInputValues);
+        setImageUrl("initialState");
+        setLoading(false);
+        console.log(loading);
     }
 
     const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -95,7 +100,13 @@ const PostYourPet: NextPage = () => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        uploadImage()
+        Promise.resolve()
+        .then(() => {
+            setLoading(true)
+        })
+        .then(uploadImage)
+        /* setLoading(true)
+        uploadImage() */
     }
     
     return (

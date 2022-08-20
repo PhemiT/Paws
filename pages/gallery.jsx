@@ -4,7 +4,10 @@ import styles from "../styles/Gallery.module.scss"
 import dbConnect from '../lib/dbConnect'
 import Image from '../models/Image'
 import Link from "next/link";
-import { BsArrowUpLeft } from "react-icons/bs";
+import { BsArrowUpLeft,
+        BsArrowLeftShort,
+        BsArrowRightShort
+} from "react-icons/bs";
 
 export async function getServerSideProps() {
   await dbConnect()
@@ -52,13 +55,13 @@ const Gallery = ({slides}) => {
         </Link>  
         </div>
       <div className={styles.slides}>
-        <button onClick={() => dispatch({ type: "NEXT" })}>‹</button>
+        <button onClick={() => dispatch({ type: "NEXT" })}><span><BsArrowLeftShort /></span></button>
   
         {[...slides, ...slides, ...slides].map((slide, i) => {
           let offset = slides.length + (state.slideIndex - i);
           return <Slide slide={slide} offset={offset} key={i} />;
         })}
-        <button onClick={() => dispatch({ type: "PREV" })}>›</button>
+        <button onClick={() => dispatch({ type: "PREV" })}><span><BsArrowRightShort /></span></button>
         <style jsx global>
           {
             `

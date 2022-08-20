@@ -9,26 +9,33 @@
   > button {
     cursor: pointer;
     appearance: none;
-    background: $clr-lgt-brown;
     border: none;
-    color: $clr-black;
+    background-color: transparent;
     position: absolute;
-    font-size: 5rem;
-    width: 5rem;
-    height: 5rem;
-    top: 30%;
-    transition: opacity 0.3s;
-    opacity: 0.7;
+    top: 40%;
     z-index: 5;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid transparent;
-    border-radius: 50%;
 
-    &:hover {
-      opacity: 1;
-      color: $clr-black;
+    > span {
+      font-size: 21px;
+      color: $clr-lgt-brown;
+      background-color: $clr-black;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      transition: all 400ms ease;
+
+      &:hover {
+        color: $clr-black;
+        background-color: $clr-lgt-brown;
+        border: 2px solid $clr-black;
+      }
     }
 
     &:focus {
@@ -148,7 +155,47 @@
 
 @media screen and (max-width:1050px) {
   .slideContent {
-    width: 70vw;
-    height: 85vh;
+    width: 50vw;
+    height: 90vh;
+  }
+
+  .slides {
+
+    > button {
+      &:first-child {
+        left: -25%;
+      }
+      &:last-child {
+        right: -25%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:650px) {
+  .slideContent {
+    width: 90vw;
+    height: 75vh;
+  }
+
+  .slides {
+
+    > button {
+
+      > span {
+        font-size: 21px;
+        width: 45px;
+        height: 45px;
+        background-color: $clr-lgt-brown;
+        color: $clr-black;
+        border: 2px solid $clr-black;
+      }
+      &:first-child {
+        left: -5%;
+      }
+      &:last-child {
+        right: -5%;
+      }
+    }
   }
 }

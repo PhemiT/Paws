@@ -112,6 +112,7 @@ const PostYourPet: NextPage = () => {
                     name="name"
                     value={values.name}
                     required
+                    autoComplete="off"
                      />
                     <input 
                     type="text" 
@@ -119,7 +120,9 @@ const PostYourPet: NextPage = () => {
                     onChange={handleChange}
                     name="caption"
                     value={values.caption}
-                    required />
+                    required
+                    autoComplete="off"
+                    />
                     <label htmlFor="image-file-input">
                         <BiCloudUpload />
                         <p>{fileName}</p>

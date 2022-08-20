@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Kurt",
+        "caption": "What a distinguished gentleman",
+        "image_url": "https://res.cloudinary.com/dyc5lca0t/image/upload/v1661034834/img20_ef1yif.jpg"
+    },
+    {
+        "name": "Truffle",
+        "caption": "Corgi Supremacy",
+        "image_url": "https://res.cloudinary.com/dyc5lca0t/image/upload/v1661034650/img15_mfm6hx.jpg"
+    },
+    {
+        "name": "Kite and Luna",
+        "caption": "Two best friends in a room :)",
+        "image_url": "https://res.cloudinary.com/dyc5lca0t/image/upload/v1661034650/img4_xkuxo2.jpg"
+    },
+    {
+        "name": "Bella and Charlie",
+        "caption": "Bella, don't do it!!",
+        "image_url": "https://res.cloudinary.com/dyc5lca0t/image/upload/v1661035218/img6_fuy5dx.jpg"
+    },
+    {
+        "name": "Milo",
+        "caption": "The most dreamy eyes",
+        "image_url": "https://res.cloudinary.com/dyc5lca0t/image/upload/v1661035238/img12_thrku1.jpg"
+    },
+    {
+        "name": "Chloe and Jasper",
+        "caption": "Precious Babies",
+        "image_url": "https://res.cloudinary.com/dyc5lca0t/image/upload/v1661034985/img17_wvfdir.jpg"
+    },
+    {
+        "name": "Nala and Angel",
+        "caption": "Too damn Cute!",
+        "image_url": "https://res.cloudinary.com/dyc5lca0t/image/upload/v1661034673/img7_sbwfdq.jpg"
+    },
+    {
+        "name": "Bingo",
+        "caption": "Bingo don't bite, LMAO!",
+        "image_url": "https://res.cloudinary.com/dyc5lca0t/image/upload/v1661035257/img25_pbihmf.jpg"
+    },
+    {
+        "name": "Ravenn",
+        "caption": "The devil himself, LOL!",
+        "image_url": "https://res.cloudinary.com/dyc5lca0t/image/upload/v1661035269/img22_eenu6y.jpg"
+    },
+    {
+        "name": "Salem",
+        "caption": "A very happy boi...",
+        "image_url": "https://res.cloudinary.com/dyc5lca0t/image/upload/v1661035280/img26_s3ffeq.jpg"
+    }
+]

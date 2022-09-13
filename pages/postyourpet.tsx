@@ -1,4 +1,5 @@
 import type {NextPage} from "next";
+import Head from "next/head";
 import React, {useState, useRef, useEffect} from 'react';
 import Navbar from '../components/Navbar';
 import { BiCloudUpload } from "react-icons/bi";
@@ -107,6 +108,9 @@ const PostYourPet: NextPage = () => {
     
     return (
         <div className="post__container">
+            <Head>
+                <title>Paws | Post your Pet</title>
+            </Head>
             <Navbar />
             {routineComplete ? 
                 <div className="routine-complete">

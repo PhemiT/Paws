@@ -1,4 +1,5 @@
-import React, { useReducer } from 'react'
+import React, { useReducer } from 'react';
+import Head from "next/head";
 import Slide from '../components/Slide';
 import styles from "../styles/Gallery.module.scss"
 import dbConnect from '../lib/dbConnect'
@@ -51,6 +52,9 @@ const Gallery = ({slides}) => {
   
     return (
       <>
+        <Head>
+          <title>Paws | Gallery</title>
+        </Head>
         <div className="redirect">
         <Link href="/">
           <button className="backtohome"><span><BsArrowUpLeft /> Back to Home</span></button>

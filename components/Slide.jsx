@@ -1,5 +1,17 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styles from "../styles/Gallery.module.scss"
+
+const useProgressiveImage =  src => {
+  const [sourceLoaded, setSourceLoaded] = useState(null)
+
+  useEffect(() => {
+    const img = new Image()
+    img.src = src
+    img.onload = () => setSourceLoaded(src)
+  }, [src])
+
+  return sourceLoaded
+ } 
 
 const useTilt = (active) => {
     const ref = useRef(null);
@@ -43,9 +55,10 @@ const useTilt = (active) => {
     return ref;
   }
 
-const Slide = ({ slide, offset }) => {
+const Slide = ({ slide, offset, placeholder }) => {
     const active = offset === 0 ? true : null;
     const ref = useTilt(active);
+    const loaded = useProgressiveImage(slide.image_url)
   
     return (
       <div
@@ -60,13 +73,13 @@ const Slide = ({ slide, offset }) => {
         <div
           className={styles.slideBackground}
           style={{
-            backgroundImage: `url('${slide.image_url}')`
+            backgroundImage: `url('${loaded || placeholder}')`
           }}
         />
         <div
           className={styles.slideContent}
           style={{
-            backgroundImage: `url('${slide.image_url}')`
+            backgroundImage: `url('${loaded || placeholder}')`
           }}
         >
           <div className={styles.slideContentInner}>

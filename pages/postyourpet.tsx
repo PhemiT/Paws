@@ -161,6 +161,7 @@ const PostYourPet: NextPage = () => {
                         {buttonText}
                     </motion.button>
                 </form>
+                <h5 className="disclaimer">Note: This website is not moderated but I will appreciate only Pet Images uploaded*</h5>
             </div>}
             {/* <div className="recent__uploads"></div> */}
             <span className="attribution">Created with ❤️ by <span className="my-name"><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/phemi_t">Phemi</a></span></span>

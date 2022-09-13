@@ -16,25 +16,31 @@ const PostYourPet: NextPage = () => {
         name: "",
         caption: "",
     };
-    const imageFile = useRef<File | any >("No File Selected");
+    const imageFile = useRef<File | any >(null);
     const [values, setValues] = useState(initialInputValues);
     const [fileName, setFileName] = useState("Select Pet Image");
     const [imageUrl, setImageUrl] = useState("initialState");
-    const [loading, setLoading] = useState(false);
+    const [routineComplete, setRoutineComplete] = useState(false);
+    const [buttonText, setButtonText] = useState("Add to Gallery");
+    const [countdown, setCountdown] = useState(10)
  
     /* useeffects */
     useEffect(() => {
         imageUrl !=="initialState" && 
         Promise.resolve()
         .then(postData)
-        .then(clearRequest)
+        .then(() => {
+            setRoutineComplete(true)
+        })
+        .then(refreshPage)
     }, [imageUrl])
 
-    /* Functions */
-    /*  */
-    /*  */
-    /* Fucntions */
-
+    useEffect(() => {
+        if (routineComplete) {
+            const timer: any = countdown > 0 && setInterval(() => setCountdown(() => countdown-1), 1000);
+            return () => clearInterval(timer);
+        }
+    }, [routineComplete, countdown])
 
     /**** POST TO MONGODB  ****/
     const postData = async () => {
@@ -70,13 +76,9 @@ const PostYourPet: NextPage = () => {
         .catch(err => console.log(err))
       }
 
-      /**** Pretty Descriptive :) ****/
-      const clearRequest = () => {
-        setFileName("Select Pet Image");
-        setValues(initialInputValues);
-        setImageUrl("initialState");
-        setLoading(false);
-        console.log(loading);
+    /**** Pretty Descriptive :) ****/
+    const refreshPage = () => {
+        setTimeout(() => window.location.reload(), 10500)
     }
 
     const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -85,8 +87,6 @@ const PostYourPet: NextPage = () => {
             ...values,
             [name]: value,
         })
-
-        console.log(values.caption, values.name)
     }
 
     const handleImageChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -94,24 +94,28 @@ const PostYourPet: NextPage = () => {
         if (!target.files) return;
         imageFile.current = target.files[0]
         setFileName(target.files[0].name)
-        
-        console.log(imageFile.current, fileName)
     }
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
         Promise.resolve()
         .then(() => {
-            setLoading(true)
+            setButtonText("Working on it....")
         })
         .then(uploadImage)
-        /* setLoading(true)
-        uploadImage() */
     }
     
     return (
         <div className="post__container">
             <Navbar />
+            {routineComplete ? 
+                <div className="routine-complete">
+                    <h1 className="title">Done</h1>
+                    <p className="refresh-text">
+                        Page Refreshing in <span>{countdown}</span> Seconds...
+                    </p>
+                </div>
+            :
             <div className="post__container--form">
                 <h1 className="title">Post your Cutie(s)</h1>
                 <p className="renderP">{imageUrl}</p>
@@ -150,10 +154,10 @@ const PostYourPet: NextPage = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.80 }}
                     >
-                        Add to Gallery
+                        {buttonText}
                     </motion.button>
                 </form>
-            </div>
+            </div>}
             {/* <div className="recent__uploads"></div> */}
             <span className="attribution">Created with ❤️ by <span className="my-name"><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/phemi_t">Phemi</a></span></span>
 

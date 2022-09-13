@@ -515,6 +515,21 @@ body {
   }
 }
 
+.routine-complete {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.refresh-text {
+  span {
+    font-weight: 700;
+    font-size: 20px;
+  }
+}
+
 /**** MIDSECTION ****/
 
 .midsection__main {
